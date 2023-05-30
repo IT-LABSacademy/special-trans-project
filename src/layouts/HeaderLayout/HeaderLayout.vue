@@ -1,11 +1,19 @@
 <template>
-    <header class="header">
-        <p>Header</p>
+    <header class="header fixed top-0 w-full">
+        <div class="container flex items-center">
+            <HeaderLogo />
+            <HeaderMenu />
+            <HeaderActions />
+        </div>
     </header>
 </template>
 
 <script>
-export default {
+import HeaderActions from './components/HeaderActions.vue';
+import HeaderLogo from './components/HeaderLogo.vue';
+import HeaderMenu from './components/HeaderMenu.vue';
 
+export default {
+    components: { HeaderLogo, HeaderMenu, HeaderActions }
 }
 </script>
