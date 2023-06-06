@@ -1,5 +1,6 @@
 <template>
-    <header class="header fixed top-0 w-full transition-all " :class="isScrolled ? 'header-scrolled lg:pt-0' : 'lg:pt-8'">
+    <header class="header z-50 fixed top-0 w-full transition-all "
+        :class="isScrolled ? 'header-scrolled lg:pt-0' : 'lg:pt-8'">
         <div class="container flex items-center">
             <HeaderLogo />
             <HeaderMenu />
@@ -7,7 +8,7 @@
         </div>
     </header>
     <Transition name="menu">
-        <HiddenMenu v-if="isOpen" @closeMenu="toggleMenu" />
+        <HiddenMenu class="z-50" v-if="isOpen" @closeMenu="toggleMenu" />
     </Transition>
 </template>
 
