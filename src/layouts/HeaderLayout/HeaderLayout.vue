@@ -1,14 +1,14 @@
 <template>
-    <header class="header fixed top-0 w-full">
+    <header class="header fixed top-0 w-full transition-all lg:pt-8" :class="isScrolled ? 'header-scrolled lg:pt-0' : ''">
         <div class="container flex items-center">
             <HeaderLogo />
             <HeaderMenu />
-            <HeaderActions @openMenu="toggleMenu" />
-            <Transition name="menu">
-                <HiddenMenu v-if="isOpen" @closeMenu="toggleMenu" />
-            </Transition>
+            <HeaderActions @openMenu="toggleMenu" :scrolled="isScrolled" />
         </div>
     </header>
+    <Transition name="menu">
+        <HiddenMenu v-if="isOpen" @closeMenu="toggleMenu" />
+    </Transition>
 </template>
 
 <script>
@@ -21,13 +21,23 @@ export default {
     components: { HeaderLogo, HeaderMenu, HeaderActions, HiddenMenu },
     data() {
         return {
-            isOpen: false
+            isOpen: false,
+            isScrolled: false
         }
     },
     methods: {
         toggleMenu() {
             this.isOpen = !this.isOpen
         }
+    },
+    mounted() {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY) {
+                this.isScrolled = true
+            } else {
+                this.isScrolled = false
+            }
+        })
     }
 }
 </script>
@@ -41,5 +51,10 @@ export default {
 .menu-enter-from,
 .menu-leave-to {
     transform: translateX(100%);
+}
+
+.header-scrolled {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
 }
 </style>

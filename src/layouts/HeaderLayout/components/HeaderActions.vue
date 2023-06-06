@@ -1,6 +1,6 @@
 <template>
     <div class="header-actions ml-auto">
-        <TheButton class="hidden lg:block" v-if="true">
+        <TheButton class="hidden lg:block" v-if="scrolled">
             Заказать звонок
         </TheButton>
 
@@ -14,6 +14,9 @@
 import TheButton from '../../../ui/TheButton.vue';
 
 export default {
-    components: { TheButton }
+    components: { TheButton },
+    props: {
+        scrolled: Boolean
+    }
 }
 </script>
