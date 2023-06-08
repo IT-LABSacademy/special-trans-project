@@ -3,14 +3,16 @@
         <ul class="menu flex text-dark">
             <li class="2xl:mr-14 lg:mr-6 hover:text-brand lg:text-sm 2xl:text-lg cursor-pointer duration-300"
                 v-for="(item, idx) in menuItems" :key="item">
-                {{ item.name }}
+                <router-link :to="{ name: item.link }">
+                    {{ item.name }}
+                </router-link>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
-import menuList from '../meniList.js'
+import menuList from '../menuList.js'
 
 export default {
     data() {
